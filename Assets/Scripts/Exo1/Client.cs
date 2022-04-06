@@ -2,31 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Client : MecQuiADesChouxEtDuPognon
+namespace Exo1
 {
-
-    public Farmer farmer;
-
-    void Awake()
+    public class Client : MecQuiADesChouxEtDuPognon
     {
-        SetUp(0, 100);
-    }
 
-    public void AcheteChoux()
-    {
-        if(ALeBudget(2) && farmer.AUnChou())
+        public Farmer farmer;
+
+        void Awake()
         {
-            ModifieChoux(1);
-            ModifieBudget(-2);
-            farmer.VendsChoux();
+            SetUp(0, 100);
         }
-    }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
+        public void AcheteChoux()
         {
-            AcheteChoux();
+            if (ALeBudget(2) && farmer.AUnChou())
+            {
+                ModifieChoux(1);
+                ModifieBudget(-2);
+                farmer.VendsChoux();
+            }
+        }
+
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                AcheteChoux();
+            }
         }
     }
 }
