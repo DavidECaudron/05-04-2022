@@ -2,49 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Exo1
+public class MecQuiADesChouxEtDuPognon : MonoBehaviour
 {
-    public class MecQuiADesChouxEtDuPognon : MonoBehaviour
+    protected int choux;
+    protected int budget;
+
+    public bool ALeBudget(int budgetRequis)
     {
-        [SerializeField] private int choux;
-        [SerializeField] private int budget;
-
-        public bool HasBudget(int budgetRequis)
-        {
-            /*
-            if (budget >= budgetRequis)
-            {
-                return true;
-            }
-            
-            return false;
-            */
-
-            // return (budget >= budgetRequis) ? true : false;
-
-            return (budget >= budgetRequis);
-        }
-
-        public void SetUp (int choux, int budget)
-        {
-            this.choux = choux;
-            this.budget = budget;
-        }
-
-        public bool HasCabbage()
-        {
-            return choux > 0;
-        }
-
-        public void ModifyCabbage(int modifier)
-        {
-            choux += modifier;
-        }
-
-        public void ModifyBudget(int modifier)
-        {
-            budget += modifier;
-        }
+        return (budget >= budgetRequis);
     }
-}
 
+    public bool AUnChou()
+    {
+        return choux > 0;
+    }
+
+    public void SetUp(int choux, int budget)
+    {
+        this.choux = choux;
+        this.budget = budget;
+    }
+
+    public void ModifieChoux(int modifieur)
+    {
+        choux += modifieur;
+    }
+
+    public void ModifieBudget(int modifieur)
+    {
+        budget += modifieur;
+    }
+
+}
