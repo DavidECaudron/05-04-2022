@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-public class Pokeball : Projectile
+
+namespace Exo8
 {
-    void OnTriggerEnter2D(Collider2D col)
+    public class Pokeball : Projectile
     {
-        Pokemon other = col.GetComponent<Pokemon>();
-        if(other != null)
-        {        
-            if(other.TryCatch())
+        void OnTriggerEnter2D(Collider2D col)
+        {
+            Pokemon other = col.GetComponent<Pokemon>();
+            if (other != null)
             {
-                FindObjectsOfType<MonoBehaviour>().OfType<IScore>().First().Score(other.GetEType());
-                Destroy(other.gameObject);
-                Destroy(gameObject);
+                if (other.TryCatch())
+                {
+                    FindObjectsOfType<MonoBehaviour>().OfType<IScore>().First().Score(other.GetEType());
+                    Destroy(other.gameObject);
+                    Destroy(gameObject);
+                }
             }
         }
     }

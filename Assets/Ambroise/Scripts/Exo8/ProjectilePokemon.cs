@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectilePokemon : Projectile
+namespace Exo8
 {
+    public class ProjectilePokemon : Projectile
+    {
 
+    }
 }

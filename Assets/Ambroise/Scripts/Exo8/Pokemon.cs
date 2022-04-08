@@ -2,27 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pokemon : MonoBehaviour, ISpawned, ICatchable, IAttacker
+namespace Exo8
 {
-    [SerializeField]
-    private ETypePokemon typePokemon;
-
-    public ETypePokemon GetEType()
+    public class Pokemon : MonoBehaviour, ISpawned, ICatchable, IAttacker
     {
-        return typePokemon;
-    }
-    public virtual void Attack(GameObject target)
-    {
-        Debug.Log("attack");
-    }
+        [SerializeField]
+        private ETypePokemon typePokemon;
 
-    public virtual void OnSpawn()
-    {
+        public ETypePokemon GetEType()
+        {
+            return typePokemon;
+        }
+        public virtual void Attack(GameObject target)
+        {
+            Debug.Log("attack");
+        }
 
-    }
+        public virtual void OnSpawn()
+        {
 
-    public virtual bool TryCatch()
-    {
-        return true;
+        }
+
+        public virtual bool TryCatch()
+        {
+            return true;
+        }
     }
 }

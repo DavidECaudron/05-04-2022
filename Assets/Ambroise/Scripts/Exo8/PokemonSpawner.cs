@@ -2,28 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PokemonSpawner : MonoBehaviour, ISpawner
+namespace Exo8
 {
-    [SerializeField]
-    List<Pokemon> pokemons;
-    [SerializeField]
-    Transform min, max;
-
-    void Awake()
+    public class PokemonSpawner : MonoBehaviour, ISpawner
     {
-        InvokeRepeating(nameof(SpawnPokemon), 1, 5);
-    }
+        [SerializeField]
+        List<Pokemon> pokemons;
+        [SerializeField]
+        Transform min, max;
 
-    void SpawnPokemon()
-    {
-        Spawn(new SpawnInformation() { position = new Vector3(UnityEngine.Random.Range(min.transform.position.x, max.transform.position.x),
-            UnityEngine.Random.Range(min.transform.position.y, max.transform.position.y), 0)});
-    }
+        void Awake()
+        {
+            InvokeRepeating(nameof(SpawnPokemon), 1, 5);
+        }
 
-    public void Spawn(SpawnInformation toSpawn)
-    {
+        void SpawnPokemon()
+        {
+            Spawn(new SpawnInformation()
+            {
+                position = new Vector3(UnityEngine.Random.Range(min.transform.position.x, max.transform.position.x),
+                UnityEngine.Random.Range(min.transform.position.y, max.transform.position.y), 0)
+            });
+        }
 
-        Pokemon spawned =  Instantiate(pokemons[UnityEngine.Random.Range(0, pokemons.Count)].gameObject, toSpawn.position, Quaternion.identity).GetComponent<Pokemon>();
-        spawned.OnSpawn();
+        public void Spawn(SpawnInformation toSpawn)
+        {
+
+            Pokemon spawned = Instantiate(pokemons[UnityEngine.Random.Range(0, pokemons.Count)].gameObject, toSpawn.position, Quaternion.identity).GetComponent<Pokemon>();
+            spawned.OnSpawn();
+        }
     }
 }
