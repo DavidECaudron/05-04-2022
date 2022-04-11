@@ -58,8 +58,8 @@ namespace PlayerMovementSettings
 
         private void Rotation()
         {
-            float orientationHorizontal = Input.GetAxisRaw("Joystick Horizontal");
             float orientationVertical = Input.GetAxisRaw("Joystick Vertical");
+            float orientationHorizontal = Input.GetAxisRaw("Joystick Horizontal");
 
             _orientationInput = new Vector3(orientationHorizontal, 0.0f, orientationVertical).normalized;
         }
