@@ -70,7 +70,7 @@ namespace PlayerMovementSettings
 
         #endregion
 
-        #region Debug & tools
+        #region Debug & Tools
 
         #endregion
 

@@ -12,10 +12,14 @@ public class EnemyWalker : MonoBehaviour
     [SerializeField]
     private float _rotationSpeed = 0.5f;
 
+    [SerializeField]
+    private float _moveSpeed = 5.0f;
+
     #endregion
     #region Private
 
     private Transform _enemytransform;
+    private Rigidbody _enemyRigidbody;
 
     #endregion
     #region Unity API
@@ -23,6 +27,7 @@ public class EnemyWalker : MonoBehaviour
     private void Awake()
     {
         _enemytransform = GetComponent<Transform>();
+        _enemyRigidbody = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
@@ -40,9 +45,13 @@ public class EnemyWalker : MonoBehaviour
 
         Vector3 direction = (playerPosition - enemyPosition).normalized;
 
-        _enemytransform.rotation = Quaternion.LookRotation(direction);
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
 
-        _enemytransform.rotation = Quaternion.RotateTowards(_enemytransform.rotation, _playerTransform.rotation, _rotationSpeed * Time.deltaTime);
+        Quaternion rotateTowards = Quaternion.RotateTowards(_enemytransform.rotation, lookRotation, _rotationSpeed * Time.deltaTime);
+
+        _enemyRigidbody.MoveRotation(rotateTowards);
+
+        _enemyRigidbody.velocity = _enemytransform.forward * _moveSpeed;
     }
 
     #endregion
