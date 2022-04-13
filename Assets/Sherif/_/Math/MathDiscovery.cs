@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,6 +45,28 @@ public class MathDiscovery : MonoBehaviour
 
     #endregion
 
+    #region Day three
+
+    private void DistanceMath(Vector3 firstVector, Vector3 secondVector)
+    {
+        float result = 0.0f;
+
+        result = Mathf.Pow(secondVector.x - firstVector.x, 2.0f);
+        result += Mathf.Pow(secondVector.y - firstVector.y, 2.0f);
+        result += Mathf.Pow(secondVector.z - firstVector.z, 2.0f);
+
+        result = Mathf.Sqrt(result);
+
+        Debug.Log($"Distance Vector Math: {result}");
+    }
+
+    private void DistanceUnity(Vector3 firstVector, Vector3 secondVector)
+    {
+        Debug.Log($"Distance Vector Unity: {Vector3.Distance(firstVector, secondVector)}");
+    }
+
+    #endregion
+
     #region Debug & Tools
 
     private void OnGUI()
@@ -81,6 +104,22 @@ public class MathDiscovery : MonoBehaviour
             var secondVector = new Vector3( 0, 1, 0 );
 
             SubVectorMath( firstVector, secondVector );
+        }
+
+        Space(2);
+        if (Button("Distance (Unity)"))
+        {
+            var firstVector = new Vector3(1, 0, 1);
+            var secondVector = new Vector3(0, 1, 0);
+
+            DistanceUnity(firstVector, secondVector);
+        }
+        if (Button("Distance (Maths)"))
+        {
+            var firstVector = new Vector3(1, 0, 1);
+            var secondVector = new Vector3(0, 1, 0);
+
+            DistanceMath(firstVector, secondVector);
         }
     }
 
