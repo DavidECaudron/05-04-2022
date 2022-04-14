@@ -7,9 +7,9 @@ public class Particle : MonoBehaviour
     #region Public
     #endregion
 
-    #region Public
+    #region Private
 
-    private Rigidbody2D _particleRigidbody;
+    private TrailRenderer _particleTrailRenderer;
 
     #endregion
 
@@ -17,15 +17,13 @@ public class Particle : MonoBehaviour
 
     private void Awake()
     {
-        _particleRigidbody = GetComponent<Rigidbody2D>();
+        _particleTrailRenderer = GetComponent<TrailRenderer>();
     }
 
-    private void Update()
+    private void Start()
     {
-        if (_particleRigidbody.velocity == Vector2.zero)
-        {
-            Destroy(gameObject);
-        }
+        _particleTrailRenderer.autodestruct = true;
+        _particleTrailRenderer.time = 2.5f;
     }
 
     #endregion
