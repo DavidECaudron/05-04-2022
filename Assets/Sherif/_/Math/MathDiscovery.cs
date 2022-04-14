@@ -67,6 +67,31 @@ public class MathDiscovery : MonoBehaviour
 
     #endregion
 
+    #region Day Four Scale vectors
+
+    private void ScaleVectorUnity(Vector3 firstVector, float scale)
+    {
+        Debug.Log($"Scale Vector Unity before scale: {firstVector.magnitude}");
+
+        var vecScale = Vector3.one * scale;
+        firstVector.Scale(vecScale);
+
+        Debug.Log($"Scale Vector Unity after scale: {firstVector.magnitude}");
+    }
+
+    private void ScaleVectorMath(Vector3 firstVector, float scale)
+    {
+        Debug.Log($"Scale Vector Math before scale: {firstVector.magnitude}");
+
+        firstVector.x *= scale;
+        firstVector.y *= scale;
+        firstVector.z *= scale;
+
+        Debug.Log($"Scale Vector Math after scale: {firstVector.magnitude}");
+    }
+
+    #endregion
+
     #region Debug & Tools
 
     private void OnGUI()
@@ -120,6 +145,22 @@ public class MathDiscovery : MonoBehaviour
             var secondVector = new Vector3(0, 1, 0);
 
             DistanceMath(firstVector, secondVector);
+        }
+
+        Space(2);
+        if (Button("Scale Vector (Unity)"))
+        {
+            var firstVector = new Vector3(1, 0, 1);
+            var scale = 2.0f;
+
+            ScaleVectorUnity(firstVector, scale);
+        }
+        if (Button("Scale Vector (Maths)"))
+        {
+            var firstVector = new Vector3(1, 0, 1);
+            var scale = 2.0f;
+
+            ScaleVectorMath(firstVector, scale);
         }
     }
 
