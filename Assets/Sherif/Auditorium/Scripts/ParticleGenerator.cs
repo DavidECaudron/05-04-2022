@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticuleGenerator : MonoBehaviour
+public class ParticleGenerator : MonoBehaviour
 {
     #region Public
 
@@ -10,7 +10,6 @@ public class ParticuleGenerator : MonoBehaviour
     [SerializeField] private float _waitForSpawn;
 
     [SerializeField] private GameObject _particlePrefab;
-    [SerializeField] private Vector2 _particleCloneDirection;
     [SerializeField] private float _particleCloneVelocity;
     [SerializeField] private float _particleCloneDrag;
     [SerializeField] private float _particleCloneDirectionAngle;
